@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaz</title>
+    <style>
+        /* General reset and styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+            color: white;
+        }
+
+        /* Header styling */
+        header {
+            background-color: black;
+            color: gold;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 2px solid gold;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header nav {
+            margin-top: 1rem;
+        }
+
+        header nav a {
+            color: gold;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.2rem;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main content styling */
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .feature {
+            background-color: #333;
+            border: 1px solid gold;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: black;
+            color: gold;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            border-top: 2px solid gold;
+        }
+
+        /* Button styling */
+        button {
+            background-color: gold;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #d4af37;
+        }
+
+        .language-switch {
+            text-align: center;
+            margin: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="header-title">Welcome to Jaz</h1> <!-- Main title of the site -->
+        <nav>
+            <a href="#" id="home-link">Home</a> <!-- Navigation link to the homepage -->
+            <a href="#" id="explore-link">Explore</a> <!-- Navigation link to explore content -->
+            <a href="#" id="profile-link">Profile</a> <!-- Navigation link to user profile -->
+        </nav>
+    </header>
+    <div class="language-switch">
+        <button onclick="switchLanguage('en')">English</button> <!-- Button to switch to English -->
+        <button onclick="switchLanguage('ar')">العربية</button> <!-- Button to switch to Arabic -->
+    </div>
+    <main>
+        <div id="features">
+            <h2 id="features-title">Unique Features</h2> <!-- Section title -->
+            <div class="feature">
+                <span id="mood-feature">Mood-Based Timeline:</span>
+                <button onclick="simulateMoodBasedTimeline()">Simulate</button> <!-- Simulate mood-based adjustments -->
+                <p id="mood-result">Click to adjust timeline based on mood.</p>
+            </div>
+            <div class="feature">
+                <span id="voice-feature">Voice-Activated Commands:</span>
+                <button onclick="voiceCommand()">Activate Voice Command</button> <!-- Activate voice commands -->
+            </div>
+            <div class="feature">
+                <span id="background-feature">Custom Post Backgrounds:</span>
+                <button onclick="customPostBackground()">Choose Background</button> <!-- Select custom backgrounds -->
+            </div>
+            <div class="feature">
+                <span id="translate-feature">Auto Translate Messages:</span>
+                <button onclick="autoTranslate()">Translate</button> <!-- Translate messages automatically -->
+                <p id="translation-result">Your translated message will appear here.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p id="footer-text">© 2024 Jaz - Where Elegance Meets Connection</p> <!-- Footer text -->
+    </footer>
+
+    <script>
+        // Simulates adjusting the timeline based on the user's mood
+        function simulateMoodBasedTimeline() {
+            const moods = ["Happy", "Sad", "Excited", "Calm"];
+            const mood = moods[Math.floor(Math.random() * moods.length)];
+            document.getElementById("mood-result").innerText = `Timeline adjusted for: ${mood} mood.`;
+        }
+
+        // Placeholder for voice command activation
+        function voiceCommand() {
+            alert("Voice commands activated. Speak to interact (Feature in development).");
+        }
+
+        // Allows the user to select custom backgrounds for posts
+        function customPostBackground() {
+            const backgrounds = ["Stars", "Ocean", "Mountains", "Abstract"];
+            const background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            alert(`Background set to: ${background}`);
+        }
+
+        // Automatically translates a message to a random language
+        function autoTranslate() {
+            const message = "Hello, how are you?";
+            const translations = {
+                "Spanish": "Hola, ¿cómo estás?",
+                "French": "Bonjour, comment ça va?",
+                "Arabic": "مرحبًا، كيف حالك؟"
+            };
+            const languages = Object.keys(translations);
+            const selectedLanguage = languages[Math.floor(Math.random() * languages.length)];
+            document.getElementById("translation-result").innerText = `Translated to ${selectedLanguage}: ${translations[selectedLanguage]}`;
+        }
+
+        // Switches the language of the interface
+        function switchLanguage(lang) {
+            const elements = {
+                en: {
+                    "header-title": "Welcome to Jaz",
+                    "home-link": "Home",
+                    "explore-link": "Explore",
+                    "profile-link": "Profile",
+                    "features-title": "Unique Features",
+                    "mood-feature": "Mood-Based Timeline:",
+                    "voice-feature": "Voice-Activated Commands:",
+                    "background-feature": "Custom Post Backgrounds:",
+                    "translate-feature": "Auto Translate Messages:",
+                    "footer-text": "© 2024 Jaz - Where Elegance Meets Connection"
+                },
+                ar: {
+                    "header-title": "مرحبًا بك في جاز",
+                    "home-link": "الرئيسية",
+                    "explore-link": "استكشاف",
+                    "profile-link": "الملف الشخصي",
+                    "features-title": "ميزات فريدة",
+                    "mood-feature": "الجدول الزمني حسب المزاج:",
+                    "voice-feature": "الأوامر الصوتية:",
+                    "background-feature": "خلفيات المنشورات:",
+                    "translate-feature": "الترجمة التلقائية للرسائل:",
+                    "footer-text": "© 2024 جاز - حيث تلتقي الأناقة بالاتصال"
+                }
+            };
+
+            const selectedLang = elements[lang];
+            for (const [id, text] of Object.entries(selectedLang)) {
+                document.getElementById(id).innerText = text;
+            }
+        }
+    </script>
+</body>
+</html>
